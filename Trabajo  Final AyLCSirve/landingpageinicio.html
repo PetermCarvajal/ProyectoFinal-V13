@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author"content="Carvajal Lugo Peter Manolo, Lopez Marín Yeliel y Nicolas Morales Delgado">
+    <meta name="keywords"content="Reciclaje,Motivar,Incentivar,CSS,HTML,JS">
+    <meta name="description"content="Esta Es Una Página Web Para Reciclaje, Con el Proposito de de Incentivar a los Usuarios a Reciclar y Cuidar el Medio Ambiente Que le Rodea. Por através de la  Facilidad de Encontrar Una Zona de Reciclaje , Proxima a Su Ubicación y Recompenzas. (Practica HTML-CSS-JS)">
+    <meta name="robots"content>
+    <meta name="robots"content="Noindex">
+    <meta name="robots"content="notranslate">
+    <meta name="revisit"content="12 days">
+    <meta http-equiv="refresh"content="172800">
+    <meta property="og:title" content="RecycleEasy La Forma Más Rápida y Eficiente de Reciclar"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/Style/landingpageinicio.css">
+    <link rel="shortcut icon" href="/Images/Logo-sin-letra-ni-fondo-ico.ico">
+    <script src="/JavaScript/script.js"></script>
+    <title>RecycleEasy</title>
+    
+
+</head>
+<body>
+    <header>
+        <div class="container__menu">
+            <div class="Logo">
+                <a href="#Ya estas En la Pestaña Inicio"><img src="/Images/Logo-sin-letra-ni-fondo-ico.ico" alt="Logo"></a>
+            </div>
+            <div class="menu">
+                <i class="fa-solid fa-bars" id="btn_menu"></i>
+                <div id="back_menu"></div>
+                <nav id="nav">
+                    <img src="/Images/Logo-sin-letra-ni-fondo-ico.ico" alt="">
+                    <ul>
+                        <li><a href="/landingpageinicio.html" id="selected">Inicio</a></li>
+                        <li><a href="/Assets/Recompensas1_1.html">Recompensas</a></li>
+                        <li><a href="/Assets/Tutoriales.html">Tutoriales</a></li>
+                        <li><a href="/Assets/Contacto1_1.html">Contactos</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container__cover">
+            <div class="cover">
+                <div class="text">
+                    <h1>Bienvenido a RecycleEasy</h1>
+
+                    <p>Una Plataforma diseñada para hacer del reciclaje algo más entretenido.</p>
+ 
+                    
+                </div>
+
+                <div class="svg">
+                    <img src="/Images/Comion de basura.svg" alt="">
+                </div>
+                
+            </div>
+            
+            <div class="map_space"> <div id="map"></div><button class="Reportar"onclick="Reportar()">Reportar</button></div>
+        </div>
+        
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Inicializar el mapa
+        let map = L.map('map').setView([4.53389, -75.68111], 14); // Coordenadas de Armenia
+
+        // Esta cosa carga y muestra el mapa
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Para el icono del contenedor
+        let trashIcon = L.icon({
+            iconUrl: "https://st2.depositphotos.com/1432405/11761/v/950/depositphotos_117614684-stock-illustration-eco-dustbin-icon-cartoon-style.jpg", // La url de los contenedorcitos
+            iconSize: [38, 38], // Ajusta el tamaño del icono, creo que asi esta bien de tamaño
+            iconAnchor: [19, 38],
+            popupAnchor: [0, -38] // Punto donde se ancla el popup en relación con el icono
+        });
+
+        // Coordenadas y nombres de los contenedores de basura, creo que los nombres son innecesarios
+        let locations = [
+            { coords: [4.542220, -75.663294], name: 'Contenedor de basura 1' },
+            { coords: [4.544495, -75.665842], name: 'Contenedor de basura 2' },
+            { coords: [4.551071, -75.659060], name: 'Contenedor de basura 3' },
+            { coords: [4.549190, -75.654372], name: 'contenedor de basura 4' },
+            { coords: [4.537165, -75.678537], name: 'contenedor de basura 5' },
+            { coords: [4.549172, -75.667283], name: 'contenedor de basura 6' },
+            { coords: [4.520699, -75.687689], name: 'contenedor de basura 7' },
+            { coords: [4.531659, -75.698040], name: 'contenedor de basura 8' },
+            { coords: [4.567555, -75.647963], name: 'contenedor de basura 9' }
+        ];
+
+        // Esto es para que el nombrecito de arrifa aparezca, tipo contenedor x
+        locations.forEach(function(location) {
+            L.marker(location.coords, { icon: trashIcon }).addTo(map)
+                .bindPopup(location.name)
+                .openPopup();
+        });
+    </script>
+    </main>
+    <script src="/JavaScript/script.js"></script>
+</body>
+</html>
